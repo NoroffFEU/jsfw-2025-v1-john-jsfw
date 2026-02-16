@@ -24,6 +24,7 @@
 .vscode/settings.json
 .DS_Store
 *.pem
+.prettier*
 
 # debug
 npm-debug.log*
