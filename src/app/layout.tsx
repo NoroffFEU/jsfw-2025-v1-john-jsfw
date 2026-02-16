@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./globals.css";
 
-const poppinsFont = poppins ({
+const poppinsFont = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weights: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -22,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable}`}>
+      <body className={`${poppinsFont.variable} font-sans`}>
         {children}
       </body>
     </html>
