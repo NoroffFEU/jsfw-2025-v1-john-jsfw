@@ -2,15 +2,21 @@
 import useProducts from "../api/products";
 import type { Product } from "../api/products";
 import { useMemo, useState, useEffect } from "react";
-import {
-  TicketPercent,
-  ShoppingCart,
-  ArrowLeft,
-  ArrowRight,
-} from "lucide-react";
+import { TicketPercent, ShoppingCart } from "lucide-react";
 
-export default function ProductGrid() {
+type ProductGridProps = {
+  searchQuery?: string;
+};
+
+export default function ProductGrid({ searchQuery = "" }: ProductGridProps) {
   const { products } = useProducts();
+
+  const filteredProducts = products.filter((p) => {
+    const q = searchQuery.trim().toLowerCase();
+    const titleMatch = p.title.toLowerCase().includes(q);
+    const tagMatch = p.tags.some((tag) => tag.toLowerCase().includes(q));
+    return titleMatch || tagMatch;
+  });
 
   return (
     <div className="grid grid-cols-1 gap-5 px-10 mt-25">
@@ -19,7 +25,7 @@ export default function ProductGrid() {
       </div>
       <h2 className="text-2xl font-bold">All Products</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 px-10 mt-10">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

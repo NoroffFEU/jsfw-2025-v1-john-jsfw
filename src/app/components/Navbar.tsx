@@ -4,7 +4,15 @@ import { useState, useRef, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import ShoppingCart from "./ShoppingCart";
 
-export default function Navbar() {
+type NavbarProps = {
+  searchQuery?: string;
+  onSearchChange?: (value: string) => void;
+};
+
+export default function Navbar({
+  searchQuery = "",
+  onSearchChange,
+}: NavbarProps) {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -44,7 +52,11 @@ export default function Navbar() {
       </Link>
 
       <div className="md:flex hidden min-w-0 flex-1 max-w-md">
-        <SearchBar />
+        <SearchBar
+          value={searchQuery ?? ""}
+          onChange={onSearchChange ?? (() => {})}
+          compact
+        />
       </div>
 
       <ul className="md:flex gap-10 justify-start text-lg hidden">
@@ -102,7 +114,11 @@ export default function Navbar() {
           >
             <ShoppingCart />
           </Link>
-          <SearchBar compact />
+          <SearchBar
+            value={searchQuery ?? ""}
+            onChange={onSearchChange ?? (() => {})}
+            compact
+          />
         </div>
       )}
     </nav>

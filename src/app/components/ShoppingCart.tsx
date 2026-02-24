@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import { ShoppingCart as CartIcon } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
+import Link from "next/link";
+import { ShoppingCart as CartIcon } from "lucide-react";
 
 export default function ShoppingCart() {
   return (
