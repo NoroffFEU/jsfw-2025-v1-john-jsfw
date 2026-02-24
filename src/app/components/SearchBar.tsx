@@ -6,7 +6,7 @@ type SearchBarProps = {
 
 export default function SearchBar({ compact = false }: SearchBarProps) {
   return (
-    <div className="flex w-full items-center justify-center gap-2">
+    <div className="flex w-full items-center justify-center gap-5">
       <input
         type="text"
         placeholder="Search..."

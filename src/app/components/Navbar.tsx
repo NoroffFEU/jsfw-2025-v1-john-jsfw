@@ -1,9 +1,8 @@
-'use client';
-import React from 'react';
-import Link from 'next/link';
-import { useState, useRef, useEffect } from 'react';
-import SearchBar from './SearchBar';
-import ShoppingCart from './ShoppingCart';
+"use client";
+import Link from "next/link";
+import { useState, useRef, useEffect } from "react";
+import SearchBar from "./SearchBar";
+import ShoppingCart from "./ShoppingCart";
 
 export default function Navbar() {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -31,15 +30,15 @@ export default function Navbar() {
         closeMenu();
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMenuOpen]);
 
   return (
     <nav className="fixed top-0 w-full bg-black text-white flex items-center justify-between h-16 py-5 px-10 gap-10">
       <Link
         href="/"
-        className="text-white text-2xl font-bold no-underline transition duration-300 hover:scale-110"
+        className="text-green-500 text-2xl font-bold no-underline transition duration-300 hover:scale-110"
       >
         LOGO
       </Link>
@@ -49,7 +48,10 @@ export default function Navbar() {
       </div>
 
       <ul className="md:flex gap-10 justify-start text-lg hidden">
-        <Link href="/" className="text-white no-underline transition duration-300 hover:scale-110">
+        <Link
+          href="/"
+          className="text-white no-underline transition duration-300 hover:scale-110"
+        >
           Home
         </Link>
 
@@ -66,7 +68,7 @@ export default function Navbar() {
         ref={buttonRef}
         type="button"
         onClick={toggleMenu}
-        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         className="flex cursor-pointer flex-col justify-center items-center gap-1 w-8 h-8 transition duration-300 hover:scale-110 md:hidden"
       >
         <span className="block w-6 h-0.5 bg-white transition duration-300 hover:scale-120 "></span>
