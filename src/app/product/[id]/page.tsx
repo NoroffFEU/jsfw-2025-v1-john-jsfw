@@ -1,9 +1,7 @@
 "use client";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import SearchBar from "../../components/SearchBar";
-import ShoppingCart from "../../components/ShoppingCart";
-
+import Buttons from "../../components/ProductButtons";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useProduct } from "../../api/products";
@@ -19,34 +17,41 @@ export default function ProductPage() {
   return (
     <main>
       <Navbar />
-      <div className="container mx-auto px-4 py-8">
-        <Link href="/">← Back</Link>
-        <div className="mt-4">
+      <div className="container mx-auto px-4 py-30">
+        <Link className="cursor-pointer" href="/">
+          ← Back
+        </Link>
+        <div className="flex items-center mt-4">
           <img
             src={product.image.url}
             alt={product.image.alt}
             className="w-full max-w-md h-auto rounded-lg"
           />
-          <h1 className="text-2xl font-bold mt-4">{product.title}</h1>
-          <p className="mt-2">{product.description}</p>
-          <p className="mt-2">
-            {product.discountedPrice < product.price ? (
-              <>
-                <span className="line-through text-gray-500">
-                  ${product.price}
-                </span>{" "}
-                <span className="text-green-600">
-                  ${product.discountedPrice}
-                </span>
-              </>
-            ) : (
-              <>${product.price}</>
-            )}
-          </p>
-          <p className="text-sm text-gray-500 mt-2">Rating: {product.rating}</p>
-          <p className="text-sm text-gray-500">
-            Tags: {product.tags.join(", ")}
-          </p>
+          <div className="flex flex-col px-10">
+            <h1 className="text-2xl font-bold mt-4">{product.title}</h1>
+            <p className="mt-2">{product.description}</p>
+            <p className="mt-2">
+              {product.discountedPrice < product.price ? (
+                <>
+                  <span className="line-through text-gray-500">
+                    ${product.price}
+                  </span>{" "}
+                  <span className="text-green-600">
+                    ${product.discountedPrice}
+                  </span>
+                </>
+              ) : (
+                <>${product.price}</>
+              )}
+            </p>
+            <p className="text-sm text-gray-500 mt-2">
+              Rating: {product.rating}
+            </p>
+            <p className="text-sm text-gray-500">
+              Tags: {product.tags.join(", ")}
+            </p>
+            <Buttons product={product} />
+          </div>
         </div>
       </div>
       <Footer />

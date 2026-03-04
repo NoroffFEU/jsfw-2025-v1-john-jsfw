@@ -79,17 +79,20 @@ export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
         <ShoppingCart />
       </ul>
 
-      <button
-        ref={buttonRef}
-        type="button"
-        onClick={toggleMenu}
-        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="flex cursor-pointer flex-col justify-center items-center gap-1 w-8 h-8 transition duration-300 hover:scale-110 md:hidden"
-      >
-        <span className="block w-6 h-0.5 bg-white transition duration-300 hover:scale-120"></span>
-        <span className="block w-6 h-0.5 bg-white transition duration-300 hover:scale-120"></span>
-        <span className="block w-6 h-0.5 bg-white transition duration-300 hover:scale-120"></span>
-      </button>
+      <div className="flex items-center gap-4 md:hidden">
+        <ShoppingCart />
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={toggleMenu}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="flex cursor-pointer flex-col justify-center items-center gap-1 w-8 h-8 transition duration-300 hover:scale-110 md:hidden"
+        >
+          <span className="block w-6 h-0.5 bg-white transition duration-300 hover:scale-120"></span>
+          <span className="block w-6 h-0.5 bg-white transition duration-300 hover:scale-120"></span>
+          <span className="block w-6 h-0.5 bg-white transition duration-300 hover:scale-120"></span>
+        </button>
+      </div>
 
       {isMenuOpen && (
         <div
@@ -110,13 +113,10 @@ export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
           >
             About
           </Link>
-          <Link
-            href="/cart-page"
+          <div
             className="origin-left flex items-center gap-2 text-white no-underline transition duration-300 hover:scale-110"
             onClick={closeMenu}
-          >
-            <ShoppingCart />
-          </Link>
+          ></div>
           <SearchBar
             value={searchValue}
             onChange={setSearchValue}
