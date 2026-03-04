@@ -15,11 +15,13 @@ export default function SuccessfulPage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 px-4">
+    <div className="flex flex-col items-center justify-center min-h-[70vh] gap-4 px-4">
       <CheckCircle className="w-20 h-20 text-green-500" strokeWidth={2} />
       <h1 className="text-2xl font-bold">Congratulations!</h1>
-      <p className="text-gray-600">Your order has been placed successfully.</p>
-      <p className="text-gray-600">
+      <p className="text-center text-gray-600">
+        Your order has been placed successfully.
+      </p>
+      <p className="text-center text-gray-600">
         We will send you a confirmation email shortly.
       </p>
       <Link

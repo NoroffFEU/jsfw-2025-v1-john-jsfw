@@ -46,7 +46,7 @@ export default function CheckoutPage() {
                     alt={item.product.image.alt}
                     className="w-30 h-30 object-cover rounded"
                   />
-                  <div>
+                  <div className="md:w-100">
                     <p className="font-medium">{item.product.title}</p>
                     <p className="text-sm text-gray-600">
                       ${price.toFixed(2)} × {item.quantity} = $
@@ -62,17 +62,76 @@ export default function CheckoutPage() {
               <p className="font-bold">
                 Total with VAT: ${totalWithVat.toFixed(2)}
               </p>
-              <button
-                disabled={cartItems.length === 0}
-                onClick={handlePlaceOrder}
-                type="button"
-                className="flex mt-4 items-center justify-center cursor-pointer text-white bg-green-400 rounded-md p-2 shadow-md hover:scale-105 transition duration-300 h-10 w-full"
-              >
-                Place Order
-              </button>
             </li>
           </ul>
         )}
+        <form
+          className="w-full max-w-md space-y-4 mt-6"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handlePlaceOrder();
+          }}
+        >
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-1">
+              Name
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              placeholder="Your name"
+              className="border border-gray-300 rounded-md p-2 w-full"
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium mb-1">
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="your@email.com"
+              className="border border-gray-300 rounded-md p-2 w-full"
+            />
+          </div>
+          <div>
+            <label htmlFor="address" className="block text-sm font-medium mb-1">
+              Address
+            </label>
+            <input
+              id="address"
+              name="address"
+              type="text"
+              required
+              placeholder="Delivery address"
+              className="border border-gray-300 rounded-md p-2 w-full"
+            />
+          </div>
+          <div>
+            <label htmlFor="payment" className="block text-sm font-medium mb-1">
+              Payment method
+            </label>
+            <select
+              id="payment"
+              name="paymentMethod"
+              className="border cursor-pointer border-gray-300 rounded-md p-2 w-full"
+            >
+              <option value="card">Card</option>
+              <option value="paypal">PayPal</option>
+            </select>
+          </div>
+          <button
+            disabled={cartItems.length === 0}
+            type="submit"
+            className="flex mt-4 items-center justify-center cursor-pointer text-white bg-green-400 rounded-md p-2 shadow-md hover:scale-105 transition duration-300 h-10 w-full"
+          >
+            Place Order
+          </button>
+        </form>
       </div>
     </main>
   );
