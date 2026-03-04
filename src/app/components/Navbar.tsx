@@ -23,6 +23,7 @@ export default function Navbar({ searchQuery, onSearchChange }: NavbarProps) {
 
   const handleSearchSubmit = () => {
     router.push(`/?search=${encodeURIComponent(searchValue)}`);
+    setSearchValue("");
   };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);

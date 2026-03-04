@@ -1,6 +1,5 @@
 "use client";
-import Footer from "../../components/Footer";
-import Navbar from "../../components/Navbar";
+
 import Buttons from "../../components/ProductButtons";
 import { useParams } from "next/navigation";
 import Link from "next/link";
@@ -16,7 +15,6 @@ export default function ProductPage() {
 
   return (
     <main>
-      <Navbar />
       <div className="container mx-auto px-4 py-30">
         <Link className="cursor-pointer" href="/">
           ← Back
@@ -56,7 +54,6 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </main>
   );
 }

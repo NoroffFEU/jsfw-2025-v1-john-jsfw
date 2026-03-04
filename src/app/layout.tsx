@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "./components/ShoppingCart";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const poppinsFont = Poppins({
   variable: "--font-poppins",
@@ -22,7 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppinsFont.variable}>
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

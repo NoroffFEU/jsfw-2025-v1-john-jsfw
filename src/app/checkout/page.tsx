@@ -1,8 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { useCart } from "../components/ShoppingCart";
 import Link from "next/link";
 
@@ -27,7 +25,6 @@ export default function CheckoutPage() {
 
   return (
     <main>
-      <Navbar />
       <div className="flex items-center flex-col container mx-auto px-4 py-30">
         <h1 className="text-2xl font-bold mb-4 mt-4">Checkout</h1>
         {cartItems.length === 0 ? (
@@ -77,7 +74,6 @@ export default function CheckoutPage() {
           </ul>
         )}
       </div>
-      <Footer />
     </main>
   );
 }
